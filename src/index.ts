@@ -6,10 +6,27 @@ interface User {
     password:string
 };
 
-// using Pick<> here...
-
+// // using Pick<> here...
 type UpdatesProps = Pick<User, "name" | "age" | "email">
 
 function updateUser(updatesProps:UpdatesProps){
     // hit the database to update the user
 }
+
+// using Partial<> here...
+interface User {
+    id:string,
+    name: string,
+    age:number,
+    email:string,
+    password:string
+};
+
+type UpdatePropsOptional = Partial<UpdatesProps>
+
+function updateUser(updatesProps:UpdatePropsOptional){
+    // hit the database to update the user
+}
+updateUser({
+    name:"Aniket"
+})
