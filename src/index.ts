@@ -59,3 +59,13 @@ usersInfo.set("sdsd@", { name: "fggfg", age:24, email:"fdffrrt@" })
 
 const user = usersInfo.get("jhfheh@")
 usersInfo.delete("sdsd@")
+
+// using Exclude here...
+type EventType = 'click' | 'scroll' | 'mousemove'
+type ExcludeEvent = Exclude<EventType, 'scroll'>;
+
+const handleEvent = (event: ExcludeEvent) => {
+    console.log(`Handling Event ${event}`);
+}
+handleEvent('click');
+handleEvent('scroll') // will give an error bcoz of Exclude<>
